@@ -1,9 +1,8 @@
 import os
-from langchain_ollama import OllamaEmbeddings
-from langchain_ollama import ChatOllama
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain_core.prompts import PromptTemplate
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
 import streamlit as st
 import json
@@ -15,8 +14,8 @@ load_dotenv()
 
 
 # Embedding model
-embeddings = OllamaEmbeddings(
-    model="mxbai-embed-large"
+embeddings = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
 
 # Load existing FAISS vector store

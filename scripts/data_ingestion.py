@@ -2,9 +2,8 @@ import json
 import time
 from langchain_core.documents import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_ollama import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
-
+from langchain_huggingface import HuggingFaceEmbeddings
 
 # ==========================
 # Clean Text
@@ -22,8 +21,9 @@ def clean_text(doc):
 # ==========================
 # Load JSON
 # ==========================
+
 with open(
-    r"C:\GenAi\LangBot\Data Collection\langchain_rag_docs.json",
+    r"data/langchain_rag_docs.json",
     "r",
     encoding="utf-8"
 ) as file:
@@ -77,8 +77,8 @@ print(f"Total Characters: {total_chars:,}")
 # ==========================
 # Embeddings
 # ==========================
-embeddings = OllamaEmbeddings(
-     model="mxbai-embed-large"
+embeddings = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
 
 print("Embedding Model Created")
