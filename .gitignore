@@ -1,0 +1,14 @@
+**pycache**/
+*.pyc
+
+.env
+
+Genai_env/
+venv/
+
+.streamlit/
+
+.vscode/
+.idea/
+
+.DS_Store
