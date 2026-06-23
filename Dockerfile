@@ -4,6 +4,9 @@ WORKDIR /app
 
 COPY requirements.txt .
 
+# Force pip to download the ultra-lightweight CPU-only PyTorch wheel
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
